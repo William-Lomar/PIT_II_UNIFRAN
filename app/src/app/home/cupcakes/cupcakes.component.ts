@@ -61,7 +61,7 @@ export class CupcakesComponent {
       nome: 'Customizado',
       valor: this.total,
       quantidade: 1,
-    } 
+    }
 
     this.carrinhoService.adicionarItem(item).subscribe({
       next: () => {
@@ -76,5 +76,9 @@ export class CupcakesComponent {
     this.opcoesRecheio.forEach(o => o.selecionada = false);
     this.opcoesCobertura.forEach(o => o.selecionada = false);
     this.calcularTotal();
+  }
+
+  tabSelecionada(): void {
+    console.log('View');
   }
 }

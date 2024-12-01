@@ -51,4 +51,8 @@ export class InicioComponent implements AfterViewInit {
       }
     })
   }
+
+  tabSelecionada(): void {
+    console.log('View');
+  }
 }

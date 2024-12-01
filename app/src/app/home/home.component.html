@@ -1,4 +1,4 @@
-<mat-tab-group id="tab-group" headerPosition="below" selectedIndex="0">
+<mat-tab-group id="tab-group" headerPosition="below" selectedIndex="0" (selectedIndexChange)="changeTab($event)">
     <mat-tab label="Inicio">
         <app-inicio></app-inicio>
     </mat-tab>

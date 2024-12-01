@@ -10,6 +10,6 @@ export class PerfilService {
   constructor() { }
 
   getInfoUsuario(): Observable<IUsuario> {
-    return of({ nome: 'William', email: 't', id: 1, endereco: 'das' })
+    return of({ nome: 'William', email: 't', id: 1, endereco: 'das' , qntPedidos: 7 })
   }
 }

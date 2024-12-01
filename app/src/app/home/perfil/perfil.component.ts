@@ -6,7 +6,8 @@ export interface IUsuario {
   id: number,
   nome: string,
   email: string,
-  endereco: string
+  endereco: string,
+  qntPedidos: number
 }
 
 @Component({
@@ -17,12 +18,13 @@ export interface IUsuario {
   styleUrl: './perfil.component.scss'
 })
 export class PerfilComponent {
-
   protected usuario?: IUsuario;
 
   constructor(
     private perfilService: PerfilService
-  ) {
+  ) { }
+
+  tabSelecionada(): void {
     this.perfilService.getInfoUsuario().subscribe({
       next: (usuario) => {
         this.usuario = usuario;

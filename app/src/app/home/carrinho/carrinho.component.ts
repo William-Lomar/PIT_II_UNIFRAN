@@ -18,14 +18,7 @@ export class CarrinhoComponent {
 
   constructor(
     private carrinhoService: CarrinhoService
-  ) {
-    this.carrinhoService.listarCarrinho().subscribe({
-      next: (items) => {
-        this.items = items;
-        this.total = items.reduce((total, item) => total + item.valor, 0);
-      }
-    })
-  }
+  ) { }
 
   comprar() {
     this.carrinhoService.finalizarCompra().subscribe({
@@ -33,6 +26,15 @@ export class CarrinhoComponent {
         this.items = [];
         this.total = 0;
         console.log("sucess");
+      }
+    })
+  }
+
+  tabSelecionada(): void {
+    this.carrinhoService.listarCarrinho().subscribe({
+      next: (items) => {
+        this.items = items;
+        this.total = items.reduce((total, item) => total + item.valor, 0);
       }
     })
   }
