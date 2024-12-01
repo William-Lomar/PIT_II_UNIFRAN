@@ -1,15 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-export interface IItem {
-  id: number,
-  nome: string,
-  imgUrl: string
-}
+import { IItem } from '../../home.model';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-favorito',
   standalone: true,
-  imports: [],
+  imports: [MatButtonModule],
   templateUrl: `./favorito.component.html`,
   styleUrl: './favorito.component.css',
 })

@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { FormatMoneyPipe } from '../../shared/formatMoney.pipe';
+import { CupcakesService } from './cupcakes.service';
+import { CarrinhoService } from '../carrinho/carrinho.service';
+import { IItem } from '../home.model';
 
 export interface IOpcao {
   nome: string,
@@ -26,10 +29,19 @@ export class CupcakesComponent {
 
   protected total: number = 0;
 
-  constructor() {
-    this.opcoesMassa.push({ nome: 'Chocolate', tipo: 'massa', valor: 1.99, selecionada: false })
-    this.opcoesRecheio.push({ nome: 'Brigadeiro', tipo: 'recheio', valor: 8.50, selecionada: false })
-    this.opcoesCobertura.push({ nome: 'Marshmellow', tipo: 'cobertura', valor: 8.90, selecionada: false })
+  constructor(
+    private cupcakesService: CupcakesService,
+    private carrinhoService: CarrinhoService
+  ) {
+    this.cupcakesService.listarOpcoes().subscribe({
+      next: (opcoes) => {
+        for (const opcao of opcoes) {
+          if (opcao.tipo == 'massa') this.opcoesMassa.push(opcao)
+          else if (opcao.tipo == 'recheio') this.opcoesRecheio.push(opcao)
+          else if (opcao.tipo == 'cobertura') this.opcoesCobertura.push(opcao)
+        }
+      }
+    })
   }
 
   selectionChange(event: MatCheckboxChange, opcao: IOpcao) {
@@ -45,6 +57,24 @@ export class CupcakesComponent {
   }
 
   fazerPedido() {
-    console.log("carmae");
+    const item: IItem = {
+      nome: 'Customizado',
+      valor: this.total,
+      quantidade: 1,
+    } 
+
+    this.carrinhoService.adicionarItem(item).subscribe({
+      next: () => {
+        console.log("Item adicionado com sucesso!");
+        this.reset();
+      }
+    })
+  }
+
+  private reset() {
+    this.opcoesMassa.forEach(o => o.selecionada = false);
+    this.opcoesRecheio.forEach(o => o.selecionada = false);
+    this.opcoesCobertura.forEach(o => o.selecionada = false);
+    this.calcularTotal();
   }
 }

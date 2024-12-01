@@ -3,6 +3,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,15 @@ import { MatButtonModule } from '@angular/material/button';
 export class LoginComponent {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) { }
 
   login() {
-    //TODO: aplicar login
-    this.router.navigate(['home'])
+    this.loginService.login().subscribe({
+      next: (autenticado) => {
+        if (autenticado) this.router.navigate(['home'])
+      }
+    })
   }
 }

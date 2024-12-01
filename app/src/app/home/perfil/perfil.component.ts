@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
+import { PerfilService } from './perfil.service';
+
+export interface IUsuario {
+  id: number,
+  nome: string,
+  email: string,
+  endereco: string
+}
 
 @Component({
   selector: 'app-perfil',
@@ -10,4 +18,15 @@ import { MatListModule } from '@angular/material/list';
 })
 export class PerfilComponent {
 
+  protected usuario?: IUsuario;
+
+  constructor(
+    private perfilService: PerfilService
+  ) {
+    this.perfilService.getInfoUsuario().subscribe({
+      next: (usuario) => {
+        this.usuario = usuario;
+      }
+    })
+  }
 }

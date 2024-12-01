@@ -3,12 +3,16 @@
 
     <mat-list>
         <mat-list-item>
+            <span matListItemTitle>Nome</span>
+            <span matListItemLine>{{usuario?.nome}}</span>
+        </mat-list-item>
+        <mat-list-item>
             <span matListItemTitle>Email</span>
-            <span matListItemLine>Usuario.email</span>
+            <span matListItemLine>{{usuario?.email}}</span>
         </mat-list-item>
         <mat-list-item>
             <span matListItemTitle>Endereço</span>
-            <span matListItemLine>Usuario.endereço</span>
+            <span matListItemLine>{{usuario?.endereco}}</span>
         </mat-list-item>
     </mat-list>
 </div>

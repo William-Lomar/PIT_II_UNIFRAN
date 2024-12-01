@@ -1,44 +1,22 @@
-<div class="pesquisa">
+<!-- <div class="pesquisa">
+    TODO: Se der tempo implementar uma pesquisa
     <mat-form-field appearance="fill">
         <mat-label>Encontre seu cupcake</mat-label>
         <input matInput>
         <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
+</div> -->
+
+<div style="width: 100%; text-align: center;">
+    <img src="cupcakes.png" height="150px" />
 </div>
 
-<!-- TODO: colocar imagem -->
-<!-- <img/> -->
+<div class="favoritos">
+    <p class="padding-padrao" style="font-weight: bold;">Favoritos da Galera</p>
 
-<div class="favoritos padding-padrao">
-    <p>Favoritos da Galera</p>
-
-    <swiper-container slides-per-view="auto">
-        <swiper-slide>
-            <app-favorito></app-favorito>
-        </swiper-slide>
-        <swiper-slide>
-            <app-favorito></app-favorito>
-        </swiper-slide>
-        <swiper-slide>
-            <app-favorito></app-favorito>
-        </swiper-slide>
-        <swiper-slide>
-            <app-favorito></app-favorito>
-        </swiper-slide>
-        <swiper-slide>
-            <app-favorito></app-favorito>
-        </swiper-slide>
-        <swiper-slide>
-            <app-favorito></app-favorito>
-        </swiper-slide>
-        <swiper-slide>
-            <app-favorito></app-favorito>
-        </swiper-slide>
-        <swiper-slide>
-            <app-favorito></app-favorito>
-        </swiper-slide>
-        <swiper-slide>
-            <app-favorito></app-favorito>
+    <swiper-container #swiper slides-per-view="auto">
+        <swiper-slide *ngFor="let favorito of favoritos">
+            <app-favorito [item]="favorito" (onAdd)="adicionarFavorito(favorito)"></app-favorito>
         </swiper-slide>
     </swiper-container>
 </div>
@@ -46,8 +24,7 @@
 <div class="promocao padding-padrao">
     <h5>Não perca a Mega Promoção </h5>
     <p> Na compra de 3 cupcakes você leva 1 cupcake grátis</p>
-    <!-- TODO: colocar imagem -->
-    <!-- <img/> -->
+    <img src="home-promocoes.png" />
 </div>
 
 <div class="cupcakes-disponiveis padding-padrao">

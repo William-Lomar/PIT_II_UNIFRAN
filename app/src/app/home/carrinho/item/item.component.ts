@@ -1,16 +1,12 @@
 import { Component, Input } from '@angular/core';
-
-export interface IItem {
-  nome: string,
-  valor: string,
-  quantidade: number,
-  imgUrl: string
-}
+import { IItem } from '../../home.model';
+import { MatButtonModule } from '@angular/material/button';
+import { FormatMoneyPipe } from '../../../shared/formatMoney.pipe';
 
 @Component({
   selector: 'app-item',
   standalone: true,
-  imports: [],
+  imports: [MatButtonModule, FormatMoneyPipe],
   templateUrl: './item.component.html',
   styleUrl: './item.component.scss',
 })

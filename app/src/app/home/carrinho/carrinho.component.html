@@ -1,6 +1,6 @@
 <div class="carrinho">
     <h5>Carrinho de Compras</h5>
-    <p>Total {{totalItens}} Item</p>
+    <p>Total {{items.length}} Item</p>
 
     <div class="itens">
         <app-item *ngFor="let item of items" [item]="item"></app-item>

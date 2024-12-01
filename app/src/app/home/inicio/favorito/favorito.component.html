@@ -1,7 +1,8 @@
 <div class="favorito">
+    <img [src]="item?.imgUrl">
     <p>{{item?.nome}}</p>
 
     <div class="adicionar">
-        <p>Adicionar</p>
+        <button mat-flat-button (click)="onAdd.emit(item)">+</button>
     </div>
 </div>
