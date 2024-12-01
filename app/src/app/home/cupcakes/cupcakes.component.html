@@ -1,1 +1,41 @@
-<p>cupcakes works!</p>
+<div class="cupcake">
+    <h4>Monte seu Cupcake</h4>
+    <p>Faça seu próprio cupcake com seus gostos e preferencias!</p>
+
+    <h5>Massa</h5>
+    <mat-checkbox *ngFor="let opcao of opcoesMassa" (change)="selectionChange($event, opcao)">
+        <div class="value-check-box">
+            <span>{{opcao.nome}}</span>
+            <span>{{opcao.valor | appFormatMoney}}</span>
+        </div>
+    </mat-checkbox>
+
+    <h5>Recheio</h5>
+    <mat-checkbox *ngFor="let opcao of opcoesRecheio" (change)="selectionChange($event, opcao)">
+        <div class="value-check-box">
+            <span>{{opcao.nome}}</span>
+            <span>{{opcao.valor | appFormatMoney}}</span>
+        </div>
+    </mat-checkbox>
+
+    <h5>Cobertura</h5>
+    <mat-checkbox *ngFor="let opcao of opcoesCobertura" (change)="selectionChange($event, opcao)">
+        <div class="value-check-box">
+            <span>{{opcao.nome}}</span>
+            <span>{{opcao.valor | appFormatMoney}}</span>
+        </div>
+    </mat-checkbox>
+
+
+<div class="pseudo-item">
+
+</div>
+
+
+    <div class="preco-container">
+        <div class="preco">
+            <div class="total">Total: {{total | appFormatMoney}}</div>
+            <div class="finalizar" (click)="fazerPedido()">Comprar</div>
+        </div>
+    </div>
+</div>

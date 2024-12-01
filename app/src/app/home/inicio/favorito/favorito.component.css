@@ -1,0 +1,19 @@
+.favorito {
+  height: 230px;
+  background-color: red;
+  width: 185px;
+  margin: 0 10px;
+  border-radius: 30px;
+
+  p {
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  .adicionar {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+  }
+}

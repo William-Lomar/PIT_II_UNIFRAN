@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { register } from 'swiper/element/bundle';
+
 
 @Component({
   selector: 'app-root',
@@ -11,5 +13,8 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-
+  constructor() {
+    // register Swiper custom elements
+    register();
+  }
 }

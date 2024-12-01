@@ -1,0 +1,32 @@
+.item {
+  width: 100%;
+  height: 25vw;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+
+  .img {
+    height: 100%;
+    background: blue;
+    width: 30%;
+    border-radius: 30px;
+  }
+
+  .nome-valor {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 64%;
+
+    p {
+      padding: 10px;
+    }
+  }
+
+  .quantidade {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 20px;
+  }
+}

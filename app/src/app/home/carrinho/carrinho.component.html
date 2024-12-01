@@ -1,1 +1,16 @@
-<p>carrinho works!</p>
+<div class="carrinho">
+    <h5>Carrinho de Compras</h5>
+    <p>Total {{totalItens}} Item</p>
+
+    <div class="itens">
+        <app-item *ngFor="let item of items" [item]="item"></app-item>
+        <div class="pseudo-item"></div>
+    </div>
+
+    <div class="preco-container">
+        <div class="preco">
+            <div class="total">Total: {{total | appFormatMoney}}</div>
+            <div class="finalizar" (click)="comprar()">Comprar</div>
+        </div>
+    </div>
+</div>

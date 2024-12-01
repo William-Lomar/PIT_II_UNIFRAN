@@ -1,0 +1,37 @@
+.carrinho {
+    padding: 10px;
+    height: 96%;
+}
+
+.preco-container {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+
+    .preco {
+        width: 80%;
+        margin: 20px auto;
+        background-color: #C97171;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        border-radius: 20px;
+
+        .finalizar {
+            background-color: #9C4949;
+            padding: 10px;
+            border-radius: 18px;
+
+            &:hover {
+                background-color: #9c4949b9;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.pseudo-item {
+    width: 100%;
+    height: 110px;
+}
