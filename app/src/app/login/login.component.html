@@ -1,2 +1,17 @@
-<p>login works!</p>
-<button (click)="goHome()">Go home</button>
+<div class="login">
+    <div class="form">
+        <img src="login-cupcakes.png">
+
+        <mat-form-field>
+            <mat-label>Usuário</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <button mat-flat-button (click)="login()">Entrar</button>
+    </div>
+</div>
