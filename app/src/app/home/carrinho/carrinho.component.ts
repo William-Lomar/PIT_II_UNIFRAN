@@ -4,6 +4,7 @@ import { FormatMoneyPipe } from '../../shared/formatMoney.pipe';
 import { CommonModule } from '@angular/common';
 import { ICupcake } from '../home.model';
 import { CarrinhoService } from './carrinho.service';
+import { AlertService } from '../../shared/alert/alert.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -17,7 +18,8 @@ export class CarrinhoComponent {
   protected cupcakes: ICupcake[] = [];
 
   constructor(
-    private carrinhoService: CarrinhoService
+    private carrinhoService: CarrinhoService,
+    private alertService: AlertService
   ) { }
 
   comprar() {
@@ -25,7 +27,7 @@ export class CarrinhoComponent {
       next: () => {
         this.cupcakes = [];
         this.total = 0;
-        console.log("sucess");
+        this.alertService.alert("Compra realizada com sucesso!");
       }
     })
   }

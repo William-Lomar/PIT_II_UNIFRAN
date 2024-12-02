@@ -8,6 +8,7 @@ import { ICupcake } from '../home.model';
 import { Swiper } from 'swiper/types';
 import { CommonModule } from '@angular/common';
 import { CarrinhoService } from '../carrinho/carrinho.service';
+import { AlertService } from '../../shared/alert/alert.service';
 
 @Component({
   selector: 'app-inicio',
@@ -30,7 +31,8 @@ export class InicioComponent implements AfterViewInit {
 
   constructor(
     private inicioService: InicioService,
-    protected carrinhoService: CarrinhoService
+    protected carrinhoService: CarrinhoService,
+    private alertService: AlertService
   ) { }
 
   ngAfterViewInit(): void {
@@ -47,12 +49,12 @@ export class InicioComponent implements AfterViewInit {
   adicionarFavorito(favorito: ICupcake) {
     this.carrinhoService.adicionarItem(favorito).subscribe({
       next: () => {
-        console.log("Add com sucesso");
+        this.alertService.alert('Cupcake adicionado no carrinho com sucesso!')
       }
     })
   }
 
   tabSelecionada(): void {
-    console.log('View');
+
   }
 }

@@ -6,6 +6,7 @@ import { FormatMoneyPipe } from '../../shared/formatMoney.pipe';
 import { CupcakesService } from './cupcakes.service';
 import { CarrinhoService } from '../carrinho/carrinho.service';
 import { ICupcake } from '../home.model';
+import { AlertService } from '../../shared/alert/alert.service';
 
 export interface IOpcao {
   nome: string,
@@ -31,7 +32,8 @@ export class CupcakesComponent {
 
   constructor(
     private cupcakesService: CupcakesService,
-    private carrinhoService: CarrinhoService
+    private carrinhoService: CarrinhoService,
+    private alertService: AlertService
   ) {
     this.cupcakesService.listarOpcoes().subscribe({
       next: (opcoes) => {
@@ -65,8 +67,8 @@ export class CupcakesComponent {
 
     this.carrinhoService.adicionarItem(item).subscribe({
       next: () => {
-        console.log("Item adicionado com sucesso!");
         this.reset();
+        this.alertService.alert("Cupcake personalizado adicionado no carrinho com sucesso!")
       }
     })
   }
@@ -79,6 +81,6 @@ export class CupcakesComponent {
   }
 
   tabSelecionada(): void {
-    console.log('View');
+
   }
 }
