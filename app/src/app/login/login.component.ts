@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from './login.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AlertService } from '../shared/alert/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -21,10 +22,16 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private alertService: AlertService
   ) { }
 
   login() {
+    if (!this.senha || !this.usuario) {
+      this.alertService.alert("Os campos usuário e senha são obrigatórios!");
+      return
+    }
+
     //@ts-ignore
     this.loginService.login({ usuario: this.usuario, senha: this.senha }).subscribe({
       next: (autenticado) => {
