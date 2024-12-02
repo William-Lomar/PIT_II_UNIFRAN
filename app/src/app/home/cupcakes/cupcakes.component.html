@@ -3,7 +3,8 @@
     <p>Faça seu próprio cupcake com seus gostos e preferencias!</p>
 
     <h5>Massa</h5>
-    <mat-checkbox *ngFor="let opcao of opcoesMassa" (change)="selectionChange($event, opcao)">
+    <mat-checkbox *ngFor="let opcao of opcoesMassa" (change)="selectionChange($event, opcao)"
+        [checked]="opcao.selecionada">
         <div class="value-check-box">
             <span>{{opcao.nome}}</span>
             <span>{{opcao.valor | appFormatMoney}}</span>
@@ -11,7 +12,8 @@
     </mat-checkbox>
 
     <h5>Recheio</h5>
-    <mat-checkbox *ngFor="let opcao of opcoesRecheio" (change)="selectionChange($event, opcao)">
+    <mat-checkbox *ngFor="let opcao of opcoesRecheio" (change)="selectionChange($event, opcao)"
+        [checked]="opcao.selecionada">
         <div class="value-check-box">
             <span>{{opcao.nome}}</span>
             <span>{{opcao.valor | appFormatMoney}}</span>
@@ -19,7 +21,8 @@
     </mat-checkbox>
 
     <h5>Cobertura</h5>
-    <mat-checkbox *ngFor="let opcao of opcoesCobertura" (change)="selectionChange($event, opcao)">
+    <mat-checkbox *ngFor="let opcao of opcoesCobertura" (change)="selectionChange($event, opcao)"
+        [checked]="opcao.selecionada">
         <div class="value-check-box">
             <span>{{opcao.nome}}</span>
             <span>{{opcao.valor | appFormatMoney}}</span>
@@ -27,9 +30,9 @@
     </mat-checkbox>
 
 
-<div class="pseudo-item">
+    <div class="pseudo-item">
 
-</div>
+    </div>
 
 
     <div class="preco-container">

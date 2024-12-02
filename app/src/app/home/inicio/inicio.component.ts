@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { FavoritoComponent } from './favorito/favorito.component';
 import { InicioService } from './inicio.service';
-import { IItem } from '../home.model';
+import { ICupcake } from '../home.model';
 import { Swiper } from 'swiper/types';
 import { CommonModule } from '@angular/common';
 import { CarrinhoService } from '../carrinho/carrinho.service';
@@ -26,7 +26,7 @@ import { CarrinhoService } from '../carrinho/carrinho.service';
 export class InicioComponent implements AfterViewInit {
   @ViewChild('swiper') swiperDoc?: ElementRef
 
-  protected favoritos: IItem[] = []
+  protected favoritos: ICupcake[] = []
 
   constructor(
     private inicioService: InicioService,
@@ -44,7 +44,7 @@ export class InicioComponent implements AfterViewInit {
     })
   }
 
-  adicionarFavorito(favorito: IItem) {
+  adicionarFavorito(favorito: ICupcake) {
     this.carrinhoService.adicionarItem(favorito).subscribe({
       next: () => {
         console.log("Add com sucesso");

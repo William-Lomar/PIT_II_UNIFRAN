@@ -27,6 +27,8 @@ export class PerfilComponent {
   tabSelecionada(): void {
     this.perfilService.getInfoUsuario().subscribe({
       next: (usuario) => {
+        console.log(usuario);
+        
         this.usuario = usuario;
       }
     })

@@ -1,9 +1,9 @@
 <div class="carrinho">
     <h5>Carrinho de Compras</h5>
-    <p>Total {{items.length}} Item</p>
+    <p>Total {{cupcakes.length}} Item</p>
 
     <div class="itens">
-        <app-item *ngFor="let item of items" [item]="item"></app-item>
+        <app-cupcake *ngFor="let cupcake of cupcakes" [cupcake]="cupcake"></app-cupcake>
         <div class="pseudo-item"></div>
     </div>
 

@@ -1,95 +1,28 @@
 import { Injectable } from '@angular/core';
-import { IItem } from '../home.model';
-import { Observable, of } from 'rxjs';
+import { ICupcake } from '../home.model';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { LoginService } from '../../login/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarrinhoService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+    private loginService: LoginService
+  ) { }
 
-  adicionarItem(item: IItem): Observable<IItem> {
-    return of(item)
+  adicionarItem(cupcake: ICupcake): Observable<ICupcake> {
+    return this.http.post<ICupcake>('http://localhost:3000/carrinho', { idUsuario: this.loginService.usuarioLogado?.id, cupcake })
   }
 
-  listarCarrinho(): Observable<IItem[]> {
-    return of([
-      {
-        id: 1,
-        nome: 'teste',
-        valor: 5,
-        quantidade: 1,
-        imgUrl: 'cupcakes.png'
-      },
-      {
-        id: 1,
-        nome: 'teste',
-        valor: 5,
-        quantidade: 1,
-        imgUrl: 'cupcakes.png'
-      },
-      {
-        id: 1,
-        nome: 'teste',
-        valor: 5,
-        quantidade: 1,
-        imgUrl: 'cupcakes.png'
-      },
-      {
-        id: 1,
-        nome: 'teste',
-        valor: 5,
-        quantidade: 1,
-        imgUrl: 'cupcakes.png'
-      },
-      {
-        id: 1,
-        nome: 'teste',
-        valor: 5,
-        quantidade: 1,
-        imgUrl: 'cupcakes.png'
-      }, {
-        id: 1,
-        nome: 'teste',
-        valor: 5,
-        quantidade: 1,
-        imgUrl: 'cupcakes.png'
-      }, {
-        id: 1,
-        nome: 'teste',
-        valor: 5,
-        quantidade: 1,
-        imgUrl: 'cupcakes.png'
-      }, {
-        id: 1,
-        nome: 'teste',
-        valor: 5,
-        quantidade: 1,
-        imgUrl: 'cupcakes.png'
-      }, {
-        id: 1,
-        nome: 'teste',
-        valor: 5,
-        quantidade: 1,
-        imgUrl: 'cupcakes.png'
-      }, {
-        id: 1,
-        nome: 'teste',
-        valor: 5,
-        quantidade: 1,
-        imgUrl: 'cupcakes.png'
-      }, {
-        id: 1,
-        nome: 'teste',
-        valor: 5,
-        quantidade: 1,
-        imgUrl: 'cupcakes.png'
-      },
-    ]);
+  listarCarrinho(): Observable<ICupcake[]> {
+    return this.http.get<ICupcake[]>('http://localhost:3000/carrinho', { params: { idUsuario: this.loginService.usuarioLogado?.id ?? '' } })
   }
 
   finalizarCompra(): Observable<boolean> {
-    return of(true);
+    return this.http.post<boolean>('http://localhost:3000/carrinho/comprar', { idUsuario: this.loginService.usuarioLogado?.id })
   }
 }

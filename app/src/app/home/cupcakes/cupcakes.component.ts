@@ -5,7 +5,7 @@ import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox
 import { FormatMoneyPipe } from '../../shared/formatMoney.pipe';
 import { CupcakesService } from './cupcakes.service';
 import { CarrinhoService } from '../carrinho/carrinho.service';
-import { IItem } from '../home.model';
+import { ICupcake } from '../home.model';
 
 export interface IOpcao {
   nome: string,
@@ -57,7 +57,7 @@ export class CupcakesComponent {
   }
 
   fazerPedido() {
-    const item: IItem = {
+    const item: ICupcake = {
       nome: 'Customizado',
       valor: this.total,
       quantidade: 1,

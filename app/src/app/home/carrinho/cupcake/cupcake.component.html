@@ -1,0 +1,16 @@
+<div class="item">
+    <div class="img">
+        <img [src]="cupcake?.imgUrl ?? 'no-image-cupcake.png'" width="100%" height="100%">
+    </div>
+
+    <div class="nome-valor">
+        <p>{{cupcake?.nome}}</p>
+        <p>{{cupcake?.valor | appFormatMoney }}</p>
+    </div>
+
+    <div class="quantidade">
+        <div class="btn">+</div>
+        <p>{{cupcake?.quantidade}}</p>
+        <div class="btn">-</div>
+    </div>
+</div>

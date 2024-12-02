@@ -4,6 +4,8 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { CupcakesComponent } from './cupcakes/cupcakes.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { LoginService } from '../login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,8 @@ import { InicioComponent } from './inicio/inicio.component';
     PerfilComponent,
     CupcakesComponent,
     CarrinhoComponent,
-    InicioComponent
+    InicioComponent,
+
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -23,6 +26,15 @@ export class HomeComponent implements AfterViewInit {
   @ViewChild(CupcakesComponent) cupcakesComponent?: CupcakesComponent;
   @ViewChild(CarrinhoComponent) carrinhoComponent?: CarrinhoComponent;
   @ViewChild(PerfilComponent) perfilComponent?: PerfilComponent;
+
+  constructor(
+    private loginService: LoginService,
+    private router: Router
+  ) {
+    if (!this.loginService.usuarioLogado) {
+      this.router.navigate(['/'])
+    }
+  }
 
   ngAfterViewInit(): void {
     this.inicioComponent?.tabSelecionada();

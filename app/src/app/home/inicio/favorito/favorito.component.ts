@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IItem } from '../../home.model';
+import { ICupcake } from '../../home.model';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class FavoritoComponent {
 
-  @Input() item?: IItem;
+  @Input() item?: ICupcake;
   @Output() onAdd = new EventEmitter();
 
 

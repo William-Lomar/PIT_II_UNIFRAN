@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
-import { ItemComponent } from './item/item.component';
+import { CupcakeComponent } from './cupcake/cupcake.component';
 import { FormatMoneyPipe } from '../../shared/formatMoney.pipe';
 import { CommonModule } from '@angular/common';
-import { IItem } from '../home.model';
+import { ICupcake } from '../home.model';
 import { CarrinhoService } from './carrinho.service';
 
 @Component({
   selector: 'app-carrinho',
   standalone: true,
-  imports: [ItemComponent, FormatMoneyPipe, CommonModule],
+  imports: [CupcakeComponent, FormatMoneyPipe, CommonModule],
   templateUrl: './carrinho.component.html',
   styleUrl: './carrinho.component.scss'
 })
 export class CarrinhoComponent {
   protected total: number = 0;
-  protected items: IItem[] = [];
+  protected cupcakes: ICupcake[] = [];
 
   constructor(
     private carrinhoService: CarrinhoService
@@ -23,7 +23,7 @@ export class CarrinhoComponent {
   comprar() {
     this.carrinhoService.finalizarCompra().subscribe({
       next: () => {
-        this.items = [];
+        this.cupcakes = [];
         this.total = 0;
         console.log("sucess");
       }
@@ -32,9 +32,9 @@ export class CarrinhoComponent {
 
   tabSelecionada(): void {
     this.carrinhoService.listarCarrinho().subscribe({
-      next: (items) => {
-        this.items = items;
-        this.total = items.reduce((total, item) => total + item.valor, 0);
+      next: (cupcakes) => {
+        this.cupcakes = cupcakes;
+        this.total = cupcakes.reduce((total, item) => total + item.valor, 0);
       }
     })
   }

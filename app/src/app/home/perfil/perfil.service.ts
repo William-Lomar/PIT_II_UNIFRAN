@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IUsuario } from './perfil.component';
+import { HttpClient } from '@angular/common/http';
+import { LoginService } from '../../login/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PerfilService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+    private loginService: LoginService
+  ) { }
 
   getInfoUsuario(): Observable<IUsuario> {
-    return of({ nome: 'William', email: 't', id: 1, endereco: 'das' , qntPedidos: 7 })
+    return this.http.get<IUsuario>('http://localhost:3000/perfil', { params: { idUsuario: this.loginService.usuarioLogado?.id ?? '' } })
   }
 }
